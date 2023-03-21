@@ -9,7 +9,7 @@ function App() {
 
   const filterItems = (category) => {
     const newItems = items.filter((item) => item.category === category);
-    setMenuItems(newItems);
+    newItems.length > 0 ? setMenuItems(newItems) : setMenuItems(items);
   };
   return (
     <main>
