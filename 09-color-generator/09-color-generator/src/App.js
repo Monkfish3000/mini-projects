@@ -6,12 +6,12 @@ import Values from 'values.js';
 function App() {
   const [color, setColor] = useState('');
   const [error, setError] = useState(false);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(new Values('#d71921').all(5));
 
   const handleSubmit = (event) => {
     event.preventDefault();
     try {
-      let colors = new Values(color).all(10);
+      let colors = new Values(color).all(5);
       setList(colors);
       setError(false);
     } catch (error) {
