@@ -18,7 +18,11 @@ const SingleItem = ({ item, removeItem }) => {
       >
         {item.name}
       </p>
-      <button type="button" className="btn remove-btn">
+      <button
+        onClick={() => removeItem(item.id)}
+        type="button"
+        className="btn remove-btn"
+      >
         delete
       </button>
     </div>
