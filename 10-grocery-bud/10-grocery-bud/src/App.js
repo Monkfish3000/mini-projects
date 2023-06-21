@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Form from './Form';
 import Items from './Items';
 
+const setLocalStorage = (items) => {
+  localStorage.setItem('list', JSON.stringify(items));
+};
+
+const defaultList = JSON.parse(localStorage.getItem('list') || '[]');
+
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(defaultList);
 
   const addItem = (itemName) => {
     const newItem = {
@@ -12,13 +18,16 @@ function App() {
       id: Date.now(),
     };
 
-    setItems([...items, newItem]);
+    const newItems = [...items, newItem];
+    setItems(newItems);
+    setLocalStorage(newItems);
   };
 
   const removeItem = (itemId) => {
     const newItems = items.filter((item) => itemId !== item.id);
 
     setItems(newItems);
+    setLocalStorage(newItems);
   };
 
   return (
