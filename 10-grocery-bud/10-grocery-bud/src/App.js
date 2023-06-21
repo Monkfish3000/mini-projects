@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import List from './List'
-import Alert from './Alert'
+import React, { useState, useEffect } from 'react';
+import List from './List';
+import Alert from './Alert';
+import Form from './Form';
 
 function App() {
-  return <h2>grocery bud setup</h2>
+  const [items, setItems] = useState([]);
+  return (
+    <section className="section-center">
+      <Form />
+    </section>
+  );
 }
 
-export default App
+export default App;
