@@ -5,9 +5,20 @@ import Form from './Form';
 
 function App() {
   const [items, setItems] = useState([]);
+
+  const addItem = (itemName) => {
+    const newItem = {
+      name: itemName,
+      completed: false,
+      id: Date.now(),
+    };
+
+    setItems([...items, newItem]);
+  };
+
   return (
     <section className="section-center">
-      <Form />
+      <Form addItem={addItem} />
     </section>
   );
 }
