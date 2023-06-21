@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Form from './Form';
 import Items from './Items';
+import { ToastContainer, toast } from 'react-toastify';
 
 const setLocalStorage = (items) => {
   localStorage.setItem('list', JSON.stringify(items));
@@ -21,6 +22,7 @@ function App() {
     const newItems = [...items, newItem];
     setItems(newItems);
     setLocalStorage(newItems);
+    toast.success('Item Added', { autoClose: 1500 });
   };
 
   const removeItem = (itemId) => {
@@ -28,6 +30,7 @@ function App() {
 
     setItems(newItems);
     setLocalStorage(newItems);
+    toast.success('Item removed from list', { autoClose: 1500 });
   };
 
   const editItem = (itemId) => {
@@ -45,6 +48,7 @@ function App() {
 
   return (
     <section className="section-center">
+      <ToastContainer position="top-center" />
       <Form addItem={addItem} />
       <Items items={items} removeItem={removeItem} editItem={editItem} />
     </section>

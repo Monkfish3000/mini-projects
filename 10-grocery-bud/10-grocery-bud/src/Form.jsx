@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Form = ({ addItem }) => {
   const [newItemName, setNewNameItem] = useState('');
@@ -6,7 +7,10 @@ const Form = ({ addItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!newItemName) return;
+    if (!newItemName) {
+      toast.error('Please add name of item', { autoClose: 1500 });
+      return;
+    }
 
     addItem(newItemName);
     setNewNameItem('');
