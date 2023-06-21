@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import List from './List';
-import Alert from './Alert';
 import Form from './Form';
+import Items from './Items';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -16,9 +15,12 @@ function App() {
     setItems([...items, newItem]);
   };
 
+  const removeItem = (itemId) => {};
+
   return (
     <section className="section-center">
       <Form addItem={addItem} />
+      <Items items={items} removeItem={removeItem} />
     </section>
   );
 }
